@@ -21,8 +21,9 @@
         <section class="register">
             <h1 class="title">Cadastrar um Funcionário</h1>
             <form action="" method="post" id="form">
-                <label for="">Nome Completo</label>
+                <label for="name">Nome Completo</label>
                 <input class="input" type="text" name="name" id="name" required>
+                <p class="error-message" id="name-error">Preencha esse nome</p>
 
                 <label for="email">Email</label>
                 <input class="input" type="email" name="email" id="email" required>
@@ -30,9 +31,11 @@
 
                 <label for="role">Cargo</label>
                 <input class="input" type="text" name="role" id="role" required>
+                <p class="error-message" id="role-error">Preencha este campo</p>
 
                 <label for="wage">Salário</label>
                 <input class="input" type="number" name="wage" id="wage" required>
+                <p class="error-message" id="wage-error">Preencha este campo</p>
 
                 <input class="submit" type="submit" value="Cadastrar">
             </form>
