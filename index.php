@@ -1,5 +1,13 @@
+<?php
+require_once("db_connection.php");
+
+$sql = "SELECT * FROM Funcionarios";
+$result = mysqli_query($db_connection, $sql);
+$total_workers = mysqli_num_rows($result);
+
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -18,7 +26,36 @@
         </nav>
     </header>
     <main>
-        <h1>Nenhum funcionário cadastrado!</h1>
+        <?php if ($total_workers > 0): ?>
+        <section>
+            <h1>Visualizando os <?= $total_workers ?> funcionários cadastrados </h1>
+
+            <div>
+                <?php
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $id =  $row["id"];
+                        $name = $row["nome"];
+                        $email = $row["email"];
+                        $role = $row["cargo"];
+                        $wage = $row["salario"];
+                        $reg_date = $row["data_registro"];
+
+                        date_default_timezone_set('America/Sao_Paulo');
+                        $pattern = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
+
+                        $formatted_wage = numfmt_format_currency($pattern, $wage, "BRL");
+                        $formatted_reg_date = date("d/m/Y H:i:s", strtotime($reg_date));
+
+                        echo "<h2>$name</h2>";
+                        echo "<p>Cargo: $role</p>";
+                        echo "<p>Salário: $formatted_wage</p>";
+                        echo "<p>Email: $email</p>";
+                        echo "<p>Data de Cadastro: $formatted_reg_date</p>";
+                    }
+                    ?>
+            </div>
+        </section>
+        <?php endif ?>
     </main>
 </body>
 

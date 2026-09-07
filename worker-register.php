@@ -1,5 +1,6 @@
 <?php
 require_once("db_connection.php");
+include("./php_utils/html_render.php");
 
 $name = $email = $role = $wage = '';
 $errors = [];
@@ -49,18 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-function show_message(string $type)
-{
-    if ($type === "success") {
-        echo "<div>";
-        echo "<h2>Funcionário cadastrado com sucesso!</h2>";
-        echo "</div>";
-    } else {
-        echo "<div>";
-        echo "<h2>Erro ao cadastrar funcionário</h2>";
-        echo "</div>";
-    }
-}
+
 
 ?>
 <!DOCTYPE html>
