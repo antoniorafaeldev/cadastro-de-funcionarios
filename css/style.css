@@ -170,13 +170,13 @@ main {
   transform: translateY(0);
 }
 
-.buttons button:last-child {
+.buttons .delete-btn {
   background: linear-gradient(135deg, #10b981, #059669);
   box-shadow: 0 8px 18px rgb(16 185 129 / 22%);
 }
 
-.buttons button:last-child:hover,
-.buttons button:last-child:focus-visible {
+.delete-btn:hover,
+.delete-btn:focus-visible {
   box-shadow: 0 12px 22px rgb(5 150 105 / 25%);
 }
 
