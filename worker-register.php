@@ -1,6 +1,6 @@
 <?php
 require_once("db_connection.php");
-include("./php_utils/html_render.php");
+include("./utils/html_render.php");
 
 $name = $email = $role = $wage = '';
 $errors = [];
