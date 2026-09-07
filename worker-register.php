@@ -70,6 +70,7 @@ function show_message(string $type)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar um Funcionário</title>
+    <link rel="stylesheet" href="./css/shared.css">
     <link rel="stylesheet" href="./css/worker-register.css">
 </head>
 
@@ -77,8 +78,8 @@ function show_message(string $type)
     <header class="header">
         <nav>
             <ul class="links">
-                <li><a href="" class="link">Cadastrar Funcionário</a></li>
-                <li><a href="" class="link">Visualizar Funcionários</a></li>
+                <li><a href="#" class="link">Cadastrar Funcionário</a></li>
+                <li><a href="./index.php" class="link">Visualizar Funcionários</a></li>
             </ul>
         </nav>
     </header>
