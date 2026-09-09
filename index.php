@@ -8,6 +8,7 @@ $total_workers = mysqli_num_rows($result);
 date_default_timezone_set('America/Sao_Paulo');
 $pattern = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
 
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -49,8 +50,9 @@ $pattern = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
 
                         $formatted_wage = numfmt_format_currency($pattern, $wage, "BRL");
                         $formatted_reg_date = date("d/m/Y H:i:s", strtotime($reg_date));
-
-                        render_worker($name, $role, $email, $formatted_wage, $formatted_reg_date);
+                        
+                        
+                        render_worker($id, $name, $role, $email, $wage, $formatted_wage, $formatted_reg_date);
                     }
                     ?>
             </div>
@@ -61,6 +63,35 @@ $pattern = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
             <a href="./worker-register.php" class="link">Cadastrar o primeiro funcionário</a>
         </section>
         <?php endif ?>
+        <dialog class="modal edit-modal" id="edit-modal">
+            <h2>Editar um funcionário</h2>
+            <form>
+                <label for="name">Nome Completo</label>
+                <input type="text" name="name" id="name">
+
+                <label for="role">Cargo</label>
+                <input type="text" name="role" id="role">
+
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+
+                <label for="wage"></label>
+                <input type="number" name="wage" id="wage" min="1" step="0.01 ">
+
+                <div class="buttons">
+                    <button class="cancel-btn">Cancelar</button>
+                    <button class="delete-btn">Editar</button>
+                </div>
+            </form>
+        </dialog>
+        <dialog class="delete-modal" id="delete-modal">
+            <h2>Tem certeza que deseja excluir esse funcionário?</h2>
+            <p class="warning">Essa ação não poderá ser desfeita</p>
+            <div class="buttons">
+                <button class="cancel-btn">Cancelar</button>
+                <button class="delete-btn">Deletar</button>
+            </div>
+        </dialog>
     </main>
 </body>
 
