@@ -84,7 +84,7 @@ $pattern = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
                 </div>
             </form>
         </dialog>
-        <dialog class="delete-modal" id="delete-modal">
+        <dialog class="modal delete-modal" id="delete-modal">
             <h2>Tem certeza que deseja excluir esse funcionário?</h2>
             <p class="warning">Essa ação não poderá ser desfeita</p>
             <div class="buttons">
@@ -93,6 +93,8 @@ $pattern = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
             </div>
         </dialog>
     </main>
+
+    <script src="./js/show-modals.js"></script>
 </body>
 
 </html>
