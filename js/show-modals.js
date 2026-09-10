@@ -17,9 +17,12 @@ deleteButtons.forEach((button) => {
 });
 
 cancelButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-        const modal = button.closest(".modal");
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
 
-        modal.close()
-    })
-})
+    const modal = button.closest("dialog");
+    if (modal) {
+      modal.close();
+    }
+  });
+});
