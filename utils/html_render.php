@@ -15,9 +15,9 @@ function show_message(string $type)
 }
 
 function render_worker(int $id, string $name, string $role, string $email, float $wage, string $formatted_wage, string $reg_date)
-{   
+{
 
-    
+
 
     echo "<article class='worker-card'>";
     echo "<div class='worker-card__header'>";

@@ -65,7 +65,7 @@ $pattern = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
         <?php endif ?>
         <dialog class="modal edit-modal" id="edit-modal">
             <h2>Editar um funcionário</h2>
-            <form id="form">
+            <form id="form" action="./edit.php" method="post">
                 <input type="hidden" name="id" id="edit-id">
 
                 <label for="name">Nome Completo</label>
