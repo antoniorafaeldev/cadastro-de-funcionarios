@@ -86,7 +86,7 @@ $pattern = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
 
                 <div class="buttons">
                     <button type="button" class="cancel-btn">Cancelar</button>
-                    <button type="submit" class="edit-btn">Editar</button>
+                    <button type="submit" class="submit-edit-btn">Editar</button>
                 </div>
             </form>
         </dialog>
@@ -102,6 +102,7 @@ $pattern = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
 
     <script src="./js/show-modals.js"></script>
     <script src="./js/form-validation.js"></script>
+    <script src="./js/fill-edit-modal.js"></script>
 </body>
 
 </html>

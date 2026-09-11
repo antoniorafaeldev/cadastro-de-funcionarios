@@ -16,7 +16,7 @@ form.addEventListener("submit", (event) => {
 
   if (!isEmailValid || !isNameValid || !isRoleValid || !isWageValid) {
     event.preventDefault();
-    return 
+    return;
   }
 });
 
