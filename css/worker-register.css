@@ -92,16 +92,7 @@ form label {
   transform: translateY(0);
 }
 
-.error-message {
-  display: none;
-  margin-top: 0.25rem;
-  color: var(--error-color);
-  font-size: 0.78rem;
-}
 
-.active {
-    display: block;
-}
 
 @media (max-width: 480px) {
   .header {

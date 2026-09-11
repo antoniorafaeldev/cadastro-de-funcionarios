@@ -50,8 +50,8 @@ $pattern = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
 
                         $formatted_wage = numfmt_format_currency($pattern, $wage, "BRL");
                         $formatted_reg_date = date("d/m/Y H:i:s", strtotime($reg_date));
-                        
-                        
+
+
                         render_worker($id, $name, $role, $email, $wage, $formatted_wage, $formatted_reg_date);
                     }
                     ?>
@@ -65,22 +65,28 @@ $pattern = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
         <?php endif ?>
         <dialog class="modal edit-modal" id="edit-modal">
             <h2>Editar um funcionário</h2>
-            <form>
+            <form id="form">
+                <input type="hidden" name="id" id="edit-id">
+
                 <label for="name">Nome Completo</label>
                 <input type="text" name="name" id="name">
+                <p class="error-message" id="name-error">Preencha esse campo</p>
 
-                <label for="role">Cargo</label>
-                <input type="text" name="role" id="role">
-
-                <label for="email">Email</label>
+                <label for="role">Email</label>
                 <input type="email" name="email" id="email">
+                <p class="error-message" id="email-error">Adicione um endereço de email válido</p>
 
-                <label for="wage"></label>
+                <label for="email">Cargo</label>
+                <input type="text" name="role" id="role">
+                <p class="error-message" id="role-error">Preencha esse campo</p>
+
+                <label for="wage">Salário</label>
                 <input type="number" name="wage" id="wage" min="1" step="0.01 ">
+                <p class="error-message" id="wage-error">Preencha esse campo</p>
 
                 <div class="buttons">
-                    <button class="cancel-btn">Cancelar</button>
-                    <button class="delete-btn">Editar</button>
+                    <button type="button" class="cancel-btn">Cancelar</button>
+                    <button type="submit" class="edit-btn">Editar</button>
                 </div>
             </form>
         </dialog>
@@ -88,13 +94,14 @@ $pattern = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
             <h2>Tem certeza que deseja excluir esse funcionário?</h2>
             <p class="warning">Essa ação não poderá ser desfeita</p>
             <div class="buttons">
-                <button class="cancel-btn">Cancelar</button>
-                <button class="delete-btn">Deletar</button>
+                <button type="button" class="cancel-btn">Cancelar</button>
+                <button type="button" class="delete-btn">Deletar</button>
             </div>
         </dialog>
     </main>
 
     <script src="./js/show-modals.js"></script>
+    <script src="./js/form-validation.js"></script>
 </body>
 
 </html>

@@ -46,3 +46,14 @@ body {
 .link:focus-visible {
   opacity: 0.78;
 }
+
+.error-message {
+  display: none;
+  margin-top: 0.25rem;
+  color: var(--error-color);
+  font-size: 0.78rem;
+}
+
+.active {
+    display: block;
+}
