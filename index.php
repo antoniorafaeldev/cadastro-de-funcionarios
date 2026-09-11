@@ -1,6 +1,7 @@
 <?php
 require_once("db_connection.php");
 include("./utils/html_render.php");
+session_start();
 
 $sql = "SELECT * FROM Funcionarios";
 $result = mysqli_query($db_connection, $sql);
@@ -31,6 +32,17 @@ $pattern = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
         </nav>
     </header>
     <main>
+        <?php if (!empty($_SESSION["success_message"])): ?>
+        <div class="success-message">
+            <h2><?= $_SESSION["success_message"]; ?></h2>
+        </div>
+        <?php unset($_SESSION["success_message"]); ?>
+        <?php elseif(!empty($_SESSION["error_message"])): ?>
+        <div class="error-message">
+            <h2><?= $_SESSION["error_message"]; ?></h2>
+        </div>
+        <?php unset($_SESSION["error_message"])?>
+        <?php endif; ?>
         <?php if ($total_workers > 0): ?>
         <section class="workers-section">
             <div class="section-header">
