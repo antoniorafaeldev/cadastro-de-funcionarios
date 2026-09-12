@@ -2,36 +2,6 @@ main {
   padding: 2rem 0 3rem;
 }
 
-.success-message {
-  width: min(1100px, 92%);
-  margin: 1.5rem auto 1.5rem;
-  padding: 0.9rem 1rem;
-  border: 1px solid rgb(34 197 94 / 28%);
-  border-radius: 12px;
-  background: rgb(34 197 94 / 10%);
-  color: #166534;
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1.5;
-  box-shadow: 0 10px 25px rgb(22 163 74 / 12%);
-  text-align: center;
-}
-
-.error-message {
-  width: min(1100px, 92%);
-  margin: 1.5rem auto 1.5rem;
-  padding: 0.9rem 1rem;
-  border: 1px solid rgb(239 68 68 / 28%);
-  border-radius: 12px;
-  background: rgb(239 68 68 / 10%);
-  color: #991b1b;
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1.5;
-  box-shadow: 0 10px 25px rgb(239 68 68 / 12%);
-  text-align: center;
-}
-
 .workers-section {
   width: min(1100px, 92%);
   margin: 0 auto;

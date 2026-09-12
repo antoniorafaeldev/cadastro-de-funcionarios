@@ -39,7 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: ./index.php");
         exit;
     } catch (mysqli_sql_exception) {
-        echo "Erro ao cadastrar funcionário.";
         
         $_SESSION["error_message"] = "Erro ao editar funcionário!";
         header("Location: ./index.php");

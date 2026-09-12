@@ -1,10 +1,11 @@
 <?php
 require_once("db_connection.php");
 include("./utils/html_render.php");
+session_start();
 
 $name = $email = $role = $wage = '';
 $errors = [];
-$status = ($_GET["success"] ?? "") === "1" ? "success" : "";
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = trim($_POST["name"] ?? '');
@@ -32,20 +33,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             if (!mysqli_stmt_execute($statement)) {
                 mysqli_stmt_close($statement);
-                $errors["general"] = "Erro ao cadastrar funcionário.";
 
-                $status = "error";
+                $_SESSION["error_message"] = "Erro ao cadastrar funcionário.";
             } else {
 
                 mysqli_stmt_close($statement);
 
-                $status = "success";
+                $_SESSION["success_message"] = "Funcionário cadastrado com sucesso!";
                 header("Location: " . $_SERVER['SCRIPT_NAME'] . "?success=1");
                 exit;
             }
         } catch (mysqli_sql_exception) {
-            $errors["general"] = "Erro ao se conectar com o banco de dados";
-            $status = "error";
+
+            $_SESSION["error_message"] = "Erro ao se conectar com o banco de dados!";
+            header("Location: ./worker-register.php");
+            exit;
         }
     }
 }
@@ -74,12 +76,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </nav>
     </header>
     <main>
-        <?php
-        if ($status !== "") {
-            $status === "success" ? show_message("success") : show_message("error");
-        }
-
-        ?>
+        <?php if (!empty($_SESSION["success_message"])): ?>
+        <div class="success-message">
+            <h2><?= $_SESSION["success_message"]; ?></h2>
+        </div>
+        <?php unset($_SESSION["success_message"]); ?>
+        <?php elseif (!empty($_SESSION["error_message"])): ?>
+        <div class="register-error-message">
+            <h2><?= $_SESSION["error_message"]; ?></h2>
+        </div>
+        <?php unset($_SESSION["error_message"]) ?>
+        <?php endif; ?>
         <section class="register">
             <h1 class="title">Cadastrar um Funcionário</h1>
             <form action="" method="post" id="form">
