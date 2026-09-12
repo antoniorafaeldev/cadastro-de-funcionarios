@@ -41,7 +41,10 @@ function render_worker(int $id, string $name, string $role, string $email, float
     >";
     echo "Editar Funcionário";
     echo "</button>";
-    echo "<button class='delete-btn'>Deletar Funcionário</button>";
+    echo "<button class='delete-btn' 
+        data-id='" . htmlspecialchars($id, ENT_QUOTES) . "'>
+        Deletar Funcionário
+        </button>";
     echo "</div>";
     echo "</article>";
 }

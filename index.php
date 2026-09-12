@@ -105,16 +105,19 @@ $pattern = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
         <dialog class="modal delete-modal" id="delete-modal">
             <h2>Tem certeza que deseja excluir esse funcionário?</h2>
             <p class="warning">Essa ação não poderá ser desfeita</p>
-            <div class="buttons">
-                <button type="button" class="cancel-btn">Cancelar</button>
-                <button type="button" class="delete-btn">Deletar</button>
-            </div>
+            <form action="./delete.php" method="post">
+                <input type="hidden" name="delete-id" id="delete-id">
+                <div class="buttons">
+                    <button type="button" class="cancel-btn">Cancelar</button>
+                    <button type="submit" class="submit-delete-btn">Deletar</button>
+                </div>
+            </form>
+
         </dialog>
     </main>
 
     <script src="./js/show-modals.js"></script>
     <script src="./js/form-validation.js"></script>
-    <script src="./js/fill-edit-modal.js"></script>
 </body>
 
 </html>
