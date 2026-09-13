@@ -33,25 +33,25 @@ $pattern = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
     </header>
     <main>
         <?php if (!empty($_SESSION["success_message"])): ?>
-        <div class="success-message">
-            <h2><?= $_SESSION["success_message"]; ?></h2>
-        </div>
-        <?php unset($_SESSION["success_message"]); ?>
-        <?php elseif(!empty($_SESSION["error_message"])): ?>
-        <div class="error-message">
-            <h2><?= $_SESSION["error_message"]; ?></h2>
-        </div>
-        <?php unset($_SESSION["error_message"])?>
+            <div class="success-message">
+                <h2><?= $_SESSION["success_message"]; ?></h2>
+            </div>
+            <?php unset($_SESSION["success_message"]); ?>
+        <?php elseif (!empty($_SESSION["error_message"])): ?>
+            <div class="error-message">
+                <h2><?= $_SESSION["error_message"]; ?></h2>
+            </div>
+            <?php unset($_SESSION["error_message"]) ?>
         <?php endif; ?>
         <?php if ($total_workers > 0): ?>
-        <section class="workers-section">
-            <div class="section-header">
-                <p class="eyebrow">Funcionários</p>
-                <h1>Visualizando os <?= $total_workers ?> funcionários cadastrados</h1>
-            </div>
+            <section class="workers-section">
+                <div class="section-header">
+                    <p class="eyebrow">Funcionários</p>
+                    <h1>Visualizando os <?= $total_workers ?> funcionários cadastrados</h1>
+                </div>
 
-            <div class="workers-grid">
-                <?php
+                <div class="workers-grid">
+                    <?php
                     while ($row = mysqli_fetch_assoc($result)) {
                         $id = htmlspecialchars($row["id"], ENT_QUOTES, 'UTF-8');
                         $name = htmlspecialchars($row["nome"], ENT_QUOTES, 'UTF-8');
@@ -67,13 +67,17 @@ $pattern = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
                         render_worker($id, $name, $role, $email, $wage, $formatted_wage, $formatted_reg_date);
                     }
                     ?>
-            </div>
-        </section>
+                </div>
+            </section>
         <?php else: ?>
-        <section>
-            <h2>Nenhum funcionário cadastrado!</h2>
-            <a href="./worker-register.php" class="link">Cadastrar o primeiro funcionário</a>
-        </section>
+            <section class="empty-state">
+                <div class="empty-state__content">
+                    <span class="empty-state__icon" aria-hidden="true">📋</span>
+                    <h2>Nenhum funcionário cadastrado!</h2>
+                    <p>Ainda não há registros no sistema.</p>
+                    <a href="./worker-register.php" class="empty-state__link">Cadastrar o primeiro funcionário</a>
+                </div>
+            </section>
         <?php endif ?>
         <dialog class="modal edit-modal" id="edit-modal">
             <h2>Editar um funcionário</h2>
